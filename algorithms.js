@@ -22,6 +22,17 @@
 
 var countVowels = function(str){
 
+  str = str.toLowerCase();
+  if ( str.length === 0 ) {
+    return 0;
+  } else {
+    if ( str[0] === 'a' || str[0] === 'i' || str[0] === 'e' || str[0] === 'o' || str[0] === 'u' ) {
+      return 1 + countVowels(str.slice(1))
+    } else {
+      return countVowels(str.slice(1));
+    }
+  }
+
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -35,7 +46,12 @@ var countVowels = function(str){
 // sumDigits(12) → 3
 
 var recursiveSum = function(n){
-
+  var str = n.toString();
+  if(str.length === 1) {
+    return n;
+  } else {
+    return Number(str[0]) + recursiveSum(Number(str.slice(1)));
+  }
 };
 
 ///////////////////////////////////////////////////////////////////////
@@ -48,7 +64,13 @@ var recursiveSum = function(n){
 // PowerOfTwo(9) -> false
 
 var isPowerOfTwo = function(n){
-
+ if ( n === 2 ) {
+    return true;
+  } else if ( n < 2 ) {
+    return false;
+  } else {
+    return isPowerOfTwo(n / 2);
+  }
 };
 
 ///////////////////////////////////////////////////////////////////////
